@@ -36,6 +36,35 @@ public static int size = 0;
         size++;
 
     }
+    public static int Search(int key){
+        Node temp=head;
+        int index=0;
+        while(temp!=null){
+            if(temp.data==key){
+                return index;
+
+            }
+            temp=temp.next;
+            index++;
+
+        }
+
+        return 0;
+
+    }
+    public static void reverse(){
+        Node curr=head;
+        Node prev=null;
+        Node next;
+
+        while(curr!=null){
+            next=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
+        head=prev;
+    }
     public static void print(){
         if(head==null){
             System.out.println("LL is empty");
@@ -56,9 +85,13 @@ public static int size = 0;
         while (n>0) {
             // l.addFirst(sc.nextInt());
              l.addEnd(sc.nextInt());
+
             
             n--;
         }
+        // int key=sc.nextInt();
+        // System.out.println(l.Search(key ));
+        l.reverse();
         l.print();
     }
     

@@ -1,39 +1,40 @@
 import java.util.Stack;
 
 public class Stack11 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
+        Stack<Double> s = new Stack<>();
+        double r = 0;
+        double op1, op2;
 
-        Stack<Integer>s=new Stack<>();
-        int r=0;
-         int op1,op2;
-        char a[]={'4','3','6','+','*','8','-'};
-        for(int i=0;i<a.length;i++){
-        char ch =a[i];
-            if(Character.isDigit(ch)){
-                s.push(ch-'0');
-            }else{
-                op2=s.pop();//6
-                op1=s.pop();//3
-                if(ch=='+'){
-                    r=op1+op2;
-                }else if(ch=='-'){
-                    r=op1-op2;
-                }else if(ch=='*'){
-                    r=op1*op2;
-                }else if(ch=='/'){
-                    r=op1/op2;
- 
+        // Take input as a postfix expression
+        String postfix = "436+*8-"; // Example postfix expression
+        for (int i = 0; i < postfix.length(); i++) {
+            char ch = postfix.charAt(i);
+            if (Character.isDigit(ch)) {
+                s.push((double) (ch - '0'));
+            } else {
+                op2 = s.pop(); // Second operand
+                op1 = s.pop(); // First operand
+                switch (ch) {
+                    case '+':
+                        r = op1 + op2;
+                        break;
+                    case '-':
+                        r = op1 - op2;
+                        break;
+                    case '*':
+                        r = op1 * op2;
+                        break;
+                    case '/':
+                        r = op1 / op2;
+                        break;
                 }
                 s.push(r);
-        
             }
         }
-        System.out.println(s.pop());
-        
+        System.out.println("Result: " + s.pop());
     }
 }
-
-
 
 // import java.util.Stack;
 
